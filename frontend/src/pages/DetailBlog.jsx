@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../api";
+import React from "react";
 
 function DetailBlog() {
     const { id } = useParams();

@@ -14,7 +14,7 @@ const BlogSubmitBox = ({ onBlogCreated }) => {
         try {
             const token = localStorage.getItem(ACCESS_TOKEN);
             const response = await api.post(
-                '/blog/blogs/',
+                '/blog/blogss/',
                 { title, content }
             );
 

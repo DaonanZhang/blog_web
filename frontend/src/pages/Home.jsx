@@ -3,6 +3,7 @@ import api from "../api";
 import BlogSubmitBox from "../components/Submit_Blog";
 import DetailBlog from "./DetailBlog";
 import { Link } from "react-router-dom";
+import React from "react";
 
 function Home() {
     const [blogs, setBlogs] = useState([]);
@@ -22,7 +23,7 @@ function Home() {
         }
 
         try {
-            const response = await api.get(`/blog/blogs/?page=${page}`);
+            const response = await api.get(`/blog/blogss/?page=${page}`);
             console.log("Fetched data:", response.data);
 
             setBlogs(response.data.results);
@@ -42,7 +43,7 @@ function Home() {
 
     const handleDelete = async (id) => {
         try {
-            await api.delete(`/blog/blogs/${id}/`);
+            await api.delete(`/blog/blogss/${id}/`);
             fetchBlogs(currentPage); 
         } catch (error) {
             if (error.response && error.response.status === 403) {
@@ -59,7 +60,8 @@ function Home() {
 
             <h1>Blog List</h1>
             <ul>
-            {blogs.map(blog => (
+            console.log("Blogs:", blogs);
+            {/* {blogs.results.map(blog => (
                 <li key={blog.id}>
                     <Link to={`/blog/blogs/${blog.id}`}>{blog.title}</Link>
                     <p>{blog.content}</p>
@@ -67,8 +69,8 @@ function Home() {
                     <p><strong>Created At:</strong> {new Date(blog.created_at).toLocaleString()}</p>
                     <button onClick={() => handleDelete(blog.id)}>Delete</button>
                     <hr />
-                </li>
-            ))}
+                </li> */}
+            {/* ))} */}
             </ul>
 
             <div>
