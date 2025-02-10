@@ -79,3 +79,22 @@ class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
         if instance.author != self.request.user:
             return Response({"detail": ""}, status=status.HTTP_403_FORBIDDEN)
         instance.delete()
+
+
+# class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = CommentSerializer
+
+#     def get_queryset(self):
+#         return Comment.objects.filter(blog_id=self.kwargs['blog_id'])
+
+#     def get_object(self):
+#         blog_id = self.kwargs['blog_id']
+#         comment_id = self.kwargs['comment_id']
+#         return get_object_or_404(Comment, id=comment_id, blog_id=blog_id)
+
+# class CommentCreateView(generics.CreateAPIView):
+#     serializer_class = CommentSerializer
+
+#     def perform_create(self, serializer):
+#         blog = get_object_or_404(Blog, id=self.kwargs['blog_id'])
+#         serializer.save(blog=blog)
